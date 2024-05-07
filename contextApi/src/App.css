@@ -1,0 +1,14 @@
+nav{
+    display: flex;
+    width: 80%;
+    height: 8vh;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+}
+
+nav > ul {
+    display: flex;
+    list-style-type: none;
+    gap: 2rem;
+}

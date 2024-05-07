@@ -1,0 +1,9 @@
+.thumbnail-container {
+    margin-top: 4rem;
+    padding: 1rem 4rem;
+    columns: 3;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    overflow: hidden;
+}
+
