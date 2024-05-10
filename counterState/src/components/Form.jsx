@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Form = () => {
   const [contacts, setContacts] = useState([]);
@@ -12,14 +12,25 @@ const Form = () => {
       email: email,
     };
 
+    // update contants with new inserted value
     setContacts([...contacts, contact]);
-
+    localStorage.setItem("contacts", JSON.stringify([...contacts, contact]));
     setName("");
     setEmail("");
   };
 
+  useEffect(() => {
+    const items = localStorage.getItem("contacts");
+    if (items == null) {
+      setContacts([]);
+    } else {
+      const parsedItems = JSON.parse(items);
+      setContacts(parsedItems);
+    }
+  }, []);
+
   return (
-    <div>
+    <div style={{ border: "1px solid black", padding: "1rem" }}>
       <form onSubmit={handleSubmit}>
         <div>
           <h3>Add Contact</h3>
@@ -63,8 +74,3 @@ const Form = () => {
 };
 
 export default Form;
-
-const arr1 = [1, 2, 3, 4];
-const arr2 = [5, 6, 7, 8];
-const arr3 = [...arr1, ...arr2];
-console.log(arr3);
